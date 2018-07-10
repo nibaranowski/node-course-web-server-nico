@@ -20,14 +20,11 @@ app.use((req, res, next) => {
     next();
 })
 
-app.use((req, res, next) => {
-    res.render('maintenance.hbs');
-})
+// app.use((req, res, next) => {
+//     res.render('maintenance.hbs');
+// })
 
 app.use(express.static(__dirname + '/public'));
-
-
-
 
 hbs.registerHelper('getCurrentYear', () => {
     return new Date().getFullYear();
@@ -36,17 +33,6 @@ hbs.registerHelper('getCurrentYear', () => {
 hbs.registerHelper('screamIt', (text) => {
     return text.toUpperCase();
 });
-
-// app.get('/', (req, res) => {
-//     //res.send('<h1>hello Express!</h1>');
-//     res.send({
-//         name: 'Andrew',
-//         likes: [
-//             'biking',
-//             'dogs'
-//         ]
-//     });
-// });
 
 app.get('/', (req, res) => {
     //res.send('<h1>hello Express!</h1>');
@@ -60,6 +46,14 @@ app.get('/about', (req, res) => {
     //res.send('<h1>hello Express!</h1>');
     res.render('about.hbs', {
         pageTitle: 'About Page'
+    });
+});
+
+app.get('/projects', (req, res) => {
+    //res.send('<h1>hello Express!</h1>');
+    res.render('projects.hbs', {
+        pageTitle: 'Projects Page',
+        aboutMessage: 'These are the projects!'
     });
 });
 
